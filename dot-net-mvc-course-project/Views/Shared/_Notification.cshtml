@@ -1,0 +1,48 @@
+@if(TempData["success"] !=null){
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.17/dist/sweetalert2.all.min.js"></script>
+    @* <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> *@
+    <script type="text/javascript">
+    @* toastr.success('@TempData["success"]'); *@
+    Swal.fire({
+        icon: 'success',
+        title: 'Saved!',
+        text: '@TempData["success"]',
+        timer: 2000,
+        showConfirmButton: false
+    });
+    </script>
+}
+
+@if(TempData["deleted"] !=null){
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.17/dist/sweetalert2.all.min.js"></script>
+    @* <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> *@
+    <script type="text/javascript">
+    @* toastr.success('@TempData["success"]'); *@
+    Swal.fire({
+        icon: 'error',
+        title: 'Deleted!',
+        text: '@TempData["deleted"]',
+        timer: 2000,
+        showConfirmButton: false
+    });
+    </script>
+}
+
+@if(TempData["error"] !=null){
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @* <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> *@
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.17/dist/sweetalert2.all.min.js"></script>
+    @* <h2></h2> *@
+    <script type="text/javascript">
+        @* toastr.error('@TempData["error"]'); *@
+    Swal.fire({
+        icon: 'error',
+        title: 'Something went wrong!',
+        text: '@TempData["error"]',
+        timer: 2000,
+        showConfirmButton: false
+    });
+    </script>
+}

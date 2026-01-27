@@ -1,0 +1,67 @@
+@model Category
+
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Edit Category</h5>
+        </div>
+
+        <div class="card-body">
+            <form method="post">
+                @* If the primary key name is other than id than we need this otherwise not *@
+                @* <input asp-for="Id" hidden/> *@
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        @* <label class="form-label">Category Name</label> *@
+                         <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" type="text"
+                               class="form-control"
+                               placeholder="Enter category name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        @* <label class="form-label">Display Order</label> *@
+                        <label asp-for="DisplayOrder" class="form-label"></label>
+                        <input asp-for="DisplayOrder" type="number"
+                               class="form-control"
+                               placeholder="Enter display order">
+                        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                    </div>
+                </div>
+
+                @* <div asp-validation-summary="All">
+                </div> *@
+                <div asp-validation-summary="ModelOnly">    
+                </div>
+                @* <div asp-validation-summary="None">    
+                </div> *@
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a asp-controller="Category" asp-action="Index" type="button" class="btn btn-secondary">
+                        Go Back
+                    </a>
+
+                    <button type="submit" class="btn btn-primary d-inline-flex align-items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="16" height="16" fill="currentColor"
+                             class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0"/>
+                        </svg>
+                        Update Category
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
