@@ -1,0 +1,75 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>dot_net_mvc_course_project</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+  <ItemGroup>
+  <!-- PROJECT REFERENCES -->
+  <ProjectReference Include="..\DNMVCCP.Utility\DNMVCCP.Utility.csproj" />
+  <ProjectReference Include="..\DNMVCCP.Models\DNMVCCP.Models.csproj" />
+  <ProjectReference Include="..\DNMVCCP.DataAccess\DNMVCCP.DataAccess.csproj" />
+  <!-- PROJECT REFERENCES -->
+
+  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0">
+  </PackageReference>
+
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0">
+  </PackageReference>
+
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0">
+  </PackageReference>
+
+  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0">
+  </PackageReference>
+
+  <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
+
+   <!--  <! For Migration Install this package:
+  // this install the package globally no need to reinstall it
+  To Install Package for migration => Command: dotnet tool install dashdash global dotnet-ef
+  To Create Migration File => Command: dotnet ef migrations add adminMigration
+  To Create Table in database => Command: dotnet ef database update
+  To Undo Migration use this command => Command: ef migrations remove
+
+  If SQL Sever is Database than use this Command: add-migration AddCategoryTableToDb
+  Migration Create Table Command: update-database
+
+  Steps:
+  1. Create a Database Connection File
+  2. Create a Connection Stirng in appsetting.json
+  3. Use the connection string in program.cs file
+  4. Create a Modal for table
+  5. Add the dataset to dbContext file
+  6. After modal creating run the migration command (to create schema file) => MySQL: dotnet ef migrations add adminMigration, SQL Server: add-migration AddCategoryTableToDb
+  7. Now run update database command to that table is created in database => MySQL: dotnet ef database update, SQL Server: update-database
+  8. Now in db context file create the seed code
+  9. As now we want to update the database please un migration to insert data: MySql: dotnet ef migrations add SeedCategoryTable, SQL Server: add-migration SeedCategoryTable 
+  10. 7. Now run update database command to that table is created in database => MySQL: dotnet ef database update, SQL Server: update-database
+ -->
+
+
+ <!-- To Create Class Library Projects
+    1. dotnet new classlib -n MyApp.Core
+  -->
+
+<!-- When we change the folder structure than we should build everything again
+  1. dotnet build DNMVCCP.Utility/DNMVCCP.Utility.csproj
+  2. dotnet build DNMVCCP.Models/DNMVCCP.Models.csproj
+  3. dotnet build DNMVCCP.DataAccess/DNMVCCP.DataAccess.csproj
+  4. dotnet build dot-net-mvc-course-project/dot-net-mvc-course-project.csproj
+  5. 
+ -->
+
+ <!-- RUN ONLY DOT NET PROJECT 
+   dotnet run dashdashproject dot-net-mvc-course-project
+ -->
+
+  </ItemGroup>
+
+</Project>
