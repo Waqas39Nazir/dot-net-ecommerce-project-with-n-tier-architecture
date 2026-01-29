@@ -1,5 +1,7 @@
 using DNMVCCP.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
+using DNMVCCP.DataAccess.Repository;
+using DNMVCCP.DataAccess.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MySQLConnectionString"))
     )
 );
+
+// Add the service for interface & its implementation here
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 var app = builder.Build();
 
