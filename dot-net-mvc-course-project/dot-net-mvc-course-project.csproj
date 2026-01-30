@@ -64,7 +64,7 @@
   3. Use the connection string in program.cs file
   4. Create a Modal for table
   5. Add the dataset to dbContext file
-  6. After modal creating run the migration command (to create schema file) => MySQL: dotnet ef migrations add adminMigration, SQL Server: add-migration AddCategoryTableToDb
+  6. After modal creating run the migration command (to create schema file) => MySQL: dotnet ef migrations add AddProductTableToDb, SQL Server: add-migration AddCategoryTableToDb
   7. Now run update database command to that table is created in database => MySQL: dotnet ef database update, SQL Server: update-database
   8. Now in db context file create the seed code
   9. As now we want to update the database please un migration to insert data: MySql: dotnet ef migrations add SeedCategoryTable, SQL Server: add-migration SeedCategoryTable 
