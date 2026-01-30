@@ -57,7 +57,7 @@
 //             return View();
 //         }
 //         // CREATE LOGIC
-        
+
 //         // EDIT LOGIC
 //         public IActionResult Edit(int? id)
 //         {
@@ -73,7 +73,7 @@
 //             {
 //                 return NotFound();
 //             }
-            
+
 //             return View(categoryFromDb);
 //         }
 
@@ -163,8 +163,9 @@ using DNMVCCP.Models;
 using DNMVCCP.DataAccess.Data;
 using DNMVCCP.DataAccess.Repository.IRepository;
 
-namespace dot_net_mvc_course_project.Controllers
+namespace dot_net_mvc_course_project.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController: Controller
     {
         // private readonly ApplicationDbContext _db;
