@@ -16,7 +16,7 @@
   <ProjectReference Include="..\DNMVCCP.DataAccess\DNMVCCP.DataAccess.csproj" />
   <!-- PROJECT REFERENCES -->
 
-  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.2">
+  <!-- <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.2">
   </PackageReference>
 
   <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.2">
@@ -32,7 +32,21 @@
   <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.2">
   </PackageReference>
 
-  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.2" />
+  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.2" /> -->
+
+  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0">
+  </PackageReference>
+
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0">
+  </PackageReference>
+
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0">
+  </PackageReference>
+
+  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0">
+  </PackageReference>
+
+  <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
 
    <!--  <! For Migration Install this package:
   // this install the package globally no need to reinstall it
@@ -73,8 +87,8 @@
  <!-- RUN ONLY DOT NET PROJECT 
    dotnet run dashdashproject dot-net-mvc-course-project
  -->
-
   </ItemGroup>
+  
   <ItemGroup>
     <Folder Include="Controllers\" />
   </ItemGroup>
