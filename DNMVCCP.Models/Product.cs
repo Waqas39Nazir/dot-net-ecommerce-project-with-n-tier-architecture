@@ -48,5 +48,16 @@ namespace DNMVCCP.Models
         [Range(1, 1000)]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price100 { get; set; }
+
+        [DisplayName("Image")]
+        public string? ImageUrl { get; set; }
+
+        //Creating a Relation between Product Table & Category Table
+        // As Category Table is dependent on Product Table
+        // There Category Table will have the foreign key
+        [DisplayName("Category")]
+        public int CategoryId { get; set; } // This is the foreign key name as CategoryId
+        [ForeignKey("CategoryId")] // Foreign key constraint using Foreign Ket Data Annotation
+        public Category Category { get; set; } // Reference to the Category Table for Foreign Key
     }
 }
