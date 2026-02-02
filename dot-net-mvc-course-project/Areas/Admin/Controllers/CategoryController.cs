@@ -181,6 +181,24 @@ namespace dot_net_mvc_course_project.Areas.Admin.Controllers
             // we are retrieving category data from database
             // List<Category> objCategoryList = _db.Categories.ToList();
             List<Category> objCategoryList = _unitOfWork.Category.GetAll().ToList();
+            /**
+            Request hits CategoryController.Index
+
+            _unitOfWork.Category
+            → accesses the CategoryRepository
+
+            GetAll()
+            → returns IEnumerable<Category>
+
+            .ToList()
+            → executes the SQL query
+
+            View(objCategoryList)
+            → passes List<Category> to the Razor view
+
+            SQL Equivalent Query
+            SELECT * FROM Categories;
+            */
             return View(objCategoryList);
         }
 

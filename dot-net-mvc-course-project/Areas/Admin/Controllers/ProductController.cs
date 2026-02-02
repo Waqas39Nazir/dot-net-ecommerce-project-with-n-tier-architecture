@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using DNMVCCP.Models;
 using DNMVCCP.DataAccess.Data;
 using DNMVCCP.DataAccess.Repository.IRepository;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace dot_net_mvc_course_project.Areas.Admin.Controllers
 {
@@ -24,12 +25,52 @@ namespace dot_net_mvc_course_project.Areas.Admin.Controllers
             // we are retrieving product data from database
             // List<Product> objProductList = _db.Categories.ToList();
             List<Product> objProductList = _unitOfWork.Product.GetAll().ToList();
+            /**
+            Request hits ProductController.Index
+
+            _unitOfWork.Product
+            → accesses the ProductRepository
+
+            GetAll()
+            → returns IEnumerable<Product>
+
+            .ToList()
+            → executes the SQL query
+
+            View(objCategoryList)
+            → passes List<Product> to the Razor view
+
+            SQL Equivalent Query
+            SELECT * FROM Products;
+            */
             return View(objProductList);
         }
 
         // CREATE LOGIC
         public IActionResult Create()
         {
+
+            IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
+            /**
+            This transforms Category entities → UI-friendly dropdown items
+            Example output:
+            [
+            { Text = "Books", Value = "1" },
+            { Text = "Electronics", Value = "2" }
+            ]
+            */
+
+            ViewBag.CategoryList = CategoryList;
+            // With View Bag We can pass the data from controller in view
+            // in return View() we are already passing the Product Data
+            // there fore we must use view bag to pass the data from controller 
+            // to view using view bag
+            /** What if we have want to fetch data from multiple models and display in View?
+            Ans: We will go for ViewModal instead of View Bag / View Data*/
             return View();
         }
 

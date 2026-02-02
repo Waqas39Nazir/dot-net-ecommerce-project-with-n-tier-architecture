@@ -53,7 +53,7 @@
   To Install Package for migration => Command: dotnet tool install dashdash global dotnet-ef
   To Create Migration File => Command: dotnet ef migrations add adminMigration
   To Create Table in database => Command: dotnet ef database update
-  To Undo Migration use this command => Command: ef migrations remove
+  To Undo Migration use this command => Command:dotnet ef migrations remove
 
   If SQL Sever is Database than use this Command: add-migration AddCategoryTableToDb
   Migration Create Table Command: update-database
