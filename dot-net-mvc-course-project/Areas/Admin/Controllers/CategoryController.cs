@@ -57,7 +57,7 @@
 //             return View();
 //         }
 //         // CREATE LOGIC
-        
+
 //         // EDIT LOGIC
 //         public IActionResult Edit(int? id)
 //         {
@@ -73,7 +73,7 @@
 //             {
 //                 return NotFound();
 //             }
-            
+
 //             return View(categoryFromDb);
 //         }
 
@@ -163,23 +163,24 @@ using DNMVCCP.Models;
 using DNMVCCP.DataAccess.Data;
 using DNMVCCP.DataAccess.Repository.IRepository;
 
-namespace dot_net_mvc_course_project.Controllers
+namespace dot_net_mvc_course_project.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController: Controller
     {
         // private readonly ApplicationDbContext _db;
-        private readonly ICategoryRepository _categoryRepo;
+        private readonly IUnitOfWork _unitOfWork;
         // ctor
         // public CategoryController(ApplicationDbContext db)
-        public CategoryController(ICategoryRepository db)
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            _categoryRepo = db;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
             // we are retrieving category data from database
             // List<Category> objCategoryList = _db.Categories.ToList();
-            List<Category> objCategoryList = _categoryRepo.GetAll().ToList();
+            List<Category> objCategoryList = _unitOfWork.Category.GetAll().ToList();
             return View(objCategoryList);
         }
 
@@ -207,10 +208,10 @@ namespace dot_net_mvc_course_project.Controllers
             {
                 // keeping track of what to add / make changes
                 // _db.Categories.Add(category);
-                _categoryRepo.Add(category);
+                _unitOfWork.Category.Add(category);
                 // save changes to database
                 // _db.SaveChanges();
-                _categoryRepo.Save();
+                _unitOfWork.Save();
                 // when we will redirect the user back to index page than this message
                 // will be shown, its shown on first render.
                 // If we are on create page and we refresh the page than nothing will happen
@@ -232,7 +233,7 @@ namespace dot_net_mvc_course_project.Controllers
             }
 
             // Category? categoryFromDb = _db.Categories.Find(id);
-            Category? categoryFromDb = _categoryRepo.Get(u => u.Id == id);
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);
             // Category? categoryFromDb1 = _db.Categories.FirstOrDefault(cat => cat.Id == id);
             // Category? categoryFromDb2 = _db.Categories.Where(cat => cat.Id == id).FirstOrDefault();
             if (categoryFromDb == null)
@@ -261,10 +262,10 @@ namespace dot_net_mvc_course_project.Controllers
             {
                 // keeping track of what to add / make changes
                 // _db.Categories.Update(category);
-                _categoryRepo.Update(category);
+                _unitOfWork.Category.Update(category);
                 // save changes to database
                 // _db.SaveChanges();
-                _categoryRepo.Save();
+                _unitOfWork.Save();
                 
                 // TempData["updated"] = "Category updated successfully";
                 TempData["success"] = "Category updated successfully";
@@ -286,7 +287,7 @@ namespace dot_net_mvc_course_project.Controllers
             }
 
             // Category? categoryFromDb = _db.Categories.Find(id);
-            Category? categoryFromDb = _categoryRepo.Get(u => u.Id == id);
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);
             // Category? categoryFromDb1 = _db.Categories.FirstOrDefault(cat => cat.Id == id);
             // Category? categoryFromDb2 = _db.Categories.Where(cat => cat.Id == id).FirstOrDefault();
             if (categoryFromDb == null)
@@ -311,15 +312,15 @@ namespace dot_net_mvc_course_project.Controllers
             }
 
             // Category? categoryFromDb = _db.Categories.Find(id);
-            Category? categoryFromDb = _categoryRepo.Get(u => u.Id == id);
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);
             if (categoryFromDb == null)
             {
                 return NotFound();
             }
             // _db.Categories.Remove(categoryFromDb);
-             _categoryRepo.Remove(categoryFromDb);
+             _unitOfWork.Category.Remove(categoryFromDb);
             // _db.SaveChanges();
-            _categoryRepo.Save();
+            _unitOfWork.Save();
             // TempData["deleted"] = "Category deleted successfully";
             TempData["deleted"] = "Category deleted successfully";
 
